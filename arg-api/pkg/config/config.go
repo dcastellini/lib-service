@@ -14,7 +14,7 @@ type APIConfiguration struct {
 		MaxConnsPerHost     int    `env:"MAX_CONNS_PER_HOST" env-default:"100" env-description:"Max Conns Per Host"`
 		MaxIdleConnsPerHost int    `env:"MAX_IDLE_CONNS_PER_HOST" env-default:"100" env-description:"Max Idle Conns Per Host"`
 		Timeout             int64  `env:"TIMEOUT_SEC" env-default:"35" env-description:"Timeout in seconds"`
-		BillingAPIBaseURL   string `env:"BASE_URL" env-default:"https://api.test.amazonaws.com" env-description:"Base URL"`
+		ProductAPIBaseURL   string `env:"BASE_URL" env-default:"https://api.test.amazonaws.com" env-description:"Base URL"`
 		RetryWaitTime       int64  `env:"RETRY_WAIT_TIME" env-default:"1" env-description:"Retry Wait Time in seconds"`
 		RetryMaxWaitTime    int64  `env:"RETRY_MAX_WAIT_TIME" env-default:"2" env-description:"Retry Max Wait Time in seconds"`
 		RetryCount          uint   `env:"RETRY_COUNT" env-default:"0" env-description:"Retry Count"`

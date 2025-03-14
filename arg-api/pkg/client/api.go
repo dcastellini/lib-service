@@ -2,6 +2,9 @@ package client
 
 import (
 	"context"
+	"github.com/dcastellini/lib-service/pkg/config"
+	"github.com/dcastellini/lib-service/pkg/domain"
+	"github.com/go-resty/resty/v2"
 )
 
 type API interface {
@@ -9,10 +12,10 @@ type API interface {
 }
 
 type IProductAPI interface {
-	DeleteProduct(ctx context.Context, request domain.) (domain.EditBillReminderResponse, error)
-	EditProduct(ctx context.Context, request domain.EditBillReminderRequest) (domain.EditBillReminderResponse, error)
-	GetProducts(ctx context.Context, externalClientID string) (domain.GetBillRemindersResponse, error)
-	CreateProduct(ctx context.Context, request domain.CreateBillReminderRequest) (domain.CreateBillReminderResponse, error)
+	DeleteProduct(ctx context.Context, request domain.DeleteProductRequest) (domain.DeleteProductResponse, error)
+	EditProduct(ctx context.Context, request domain.EditProductRequest) (domain.EditProductResponse, error)
+	GetProducts(ctx context.Context, externalClientID string) (domain.GetProductsResponse, error)
+	CreateProduct(ctx context.Context, request domain.EditProductRequest) (domain.EditProductResponse, error)
 }
 
 type client struct {
