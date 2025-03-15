@@ -16,7 +16,7 @@ func (c *client) EditProduct(ctx context.Context, request domain.EditProductRequ
 	//log := ulog.Context(ctx)
 	//log.With(ulog.Any("Body", request)).Info("Logging Request Body For billing-api")
 
-	urlPath, err := url.JoinPath(c.APIBaseUrl, productEndpoint, request.BillReminderID)
+	urlPath, err := url.JoinPath(c.APIBaseUrl, productEndpoint)
 	if err != nil {
 		return domain.EditProductResponse{}, fmt.Errorf("EditProduct() url %w", err)
 	}
@@ -35,7 +35,7 @@ func (c *client) EditProduct(ctx context.Context, request domain.EditProductRequ
 	return *editProductResponse, nil
 }
 
-func (c *client) GetProducts(ctx context.Context, externalClientID string) (domain.GetProductsResponse, error) {
+func (c *client) GetProducts(ctx context.Context, productID string) (domain.GetProductsResponse, error) {
 	//log := ulog.Context(ctx)
 	//log.With(ulog.Any("External-Client-ID", externalClientID)).Info("Logging Request queryStringParameter For billing-api")
 
@@ -46,7 +46,7 @@ func (c *client) GetProducts(ctx context.Context, externalClientID string) (doma
 
 	getProductsResponse := new(domain.GetProductsResponse)
 
-	resp, err := c.get(ctx, setQueryParams(productIDQueryParam, externalClientID), urlPath, getProductsResponse)
+	resp, err := c.get(ctx, setQueryParams(productIDQueryParam, productID), urlPath, getProductsResponse)
 	if err != nil {
 		return domain.GetProductsResponse{}, fmt.Errorf("request GetProducts() %w", err)
 	}
